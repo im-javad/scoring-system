@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('badge_user', function (Blueprint $table) {
             $table->unsignedDecimal('badge_id');
             $table->unsignedBigInteger('user_id');
+
             $table->primary(['badge_id' , 'user_id']);
+
+            $table->foreign('badge_id')->references('id')->on('badges')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

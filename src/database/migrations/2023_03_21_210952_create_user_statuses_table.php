@@ -18,6 +18,8 @@ return new class extends Migration
             $table->bigInteger('topic_count')->default(0);
             $table->bigInteger('reply_count')->default(0);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
