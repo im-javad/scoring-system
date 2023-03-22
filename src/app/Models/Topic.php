@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Topic extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title' , 'text'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
