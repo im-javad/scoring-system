@@ -32,10 +32,9 @@
           @csrf
           <label for="replyA" class="form-label">Reply</label>
           <textarea name="text" class="form-control" id="replyA" rows="3"></textarea>
-          @error('topic_id')
-              <strong>{{ $message }}</strong>
+          @error('text')
+              <strong class="text-danger">{{ $message }}</strong>
           @enderror
-          <input value="{{ $topic->id }}" type="text" name="topic_id" hidden>
           <div class="d-grid gap-2 col-6 mx-auto mt-2">
             <button class="btn btn-primary" type="submit">Send</button>
           </div>

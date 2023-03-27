@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,11 @@ Route::prefix('/topic')->group(function(){
     Route::post('/store' , [TopicController::class , 'store'])->name('topic.store');
     Route::get('/{topic}' , [TopicController::class , 'show'])->name('topic.show');
     Route::post('/{topic}/reply' , [ReplyController::class , 'store'])->name('reply.store');
+});
+
+Route::prefix('/badge')->group(function(){
+    Route::get('/new' , [BadgeController::class , 'new'])->name('badge.new');
+    Route::post('/store' , [BadgeController::class , 'store'])->name('badge.store');
 });
 
 Auth::routes();
