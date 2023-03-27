@@ -13,5 +13,6 @@ class ReplyObserver
     {
         $user = $reply->user;
         $user->increaseXp(Reply::XP);
+        $user->increaseReplyCount(); 
     }
 }

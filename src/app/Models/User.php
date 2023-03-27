@@ -62,5 +62,15 @@ class User extends Authenticatable
         $this->userStatus->save();
     }
 
+    public function increaseTopicCount()
+    {
+        $this->userStatus->topic_count++;
+        $this->userStatus->save();
+    }
 
+    public function increaseReplyCount()
+    {
+        $this->userStatus->reply_count++;
+        $this->userStatus->save();
+    }
 }

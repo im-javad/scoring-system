@@ -13,5 +13,6 @@ class TopicObserver
     {
         $user = $topic->user;
         $user->increaseXp(Topic::XP);
+        $user->increaseTopicCount(); 
     }
 }
