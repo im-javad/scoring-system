@@ -58,7 +58,9 @@ class User extends Authenticatable
 
     public function increaseXp($quantity = 1)
     {
-        $this->userStatus->xp_count += 5;
+        $this->userStatus->xp_count += $quantity;
         $this->userStatus->save();
     }
+
+
 }

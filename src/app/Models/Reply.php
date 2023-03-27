@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
+    const XP = 20;
+    
     use HasFactory;
 
     protected $fillable = ['text' , 'user_id'];

@@ -11,6 +11,7 @@ class TopicObserver
      */
     public function created(Topic $topic): void
     {
-        $topic->user->increaseXp(Topic::XP);
+        $user = $topic->user;
+        $user->increaseXp(Topic::XP);
     }
 }
