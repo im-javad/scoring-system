@@ -15,4 +15,12 @@ class Reply extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        $time = date_diff(date_create($value) , now());
+        if($time->d) return $time->d . ' days ago';
+        if($time->h) return $time->h . ' hours ago';
+        return $time->i . ' minutes ago';
+    }
 }
