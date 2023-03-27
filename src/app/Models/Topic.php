@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Topic extends Model
 {
+    const XP = 35;
+    
     use HasFactory;
 
     protected $fillable = ['title' , 'text'];
@@ -26,7 +28,7 @@ class Topic extends Model
     {
         $time = date_diff(date_create($value) , now());
         if($time->d) return $time->d . ' days ago';
-        if($time->h) return $this->h . ' hours ago';
+        if($time->h) return $time->h . ' hours ago';
         return $time->i . ' minutes ago';
     }
 }

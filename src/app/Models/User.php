@@ -50,4 +50,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reply::class);
     }
+
+    public function userStatus()
+    {
+        return $this->hasOne(UserStatus::class);
+    }
+
+    public function increaseXp($quantity = 1)
+    {
+        $this->userStatus->xp_count += 5;
+        $this->userStatus->save();
+    }
 }
