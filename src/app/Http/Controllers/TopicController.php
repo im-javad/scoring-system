@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\newTopicRequest;
 use App\Models\Topic;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class TopicController extends Controller
 {
@@ -29,15 +28,17 @@ class TopicController extends Controller
     {
         $validator = $request->validated();
 
-        auth()->user()->topics()->create($validator);
-
+        $topic = auth()->user()->topics()->create($validator);
+        
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect()->back($status = 201)->with('successAlert' , 'Topic created successfully');
+            : redirect()->route('topic.show' , $topic)->with('successAlert' , 'Topic created successfully');
     }
 
     public function show(Topic $topic)
     {
-        return view('topics.show' , compact('topic'));
+        $replies = $topic->replies;
+        
+        return view('topics.show' , compact('topic' , 'replies'));
     }
 }
