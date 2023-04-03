@@ -56,6 +56,11 @@ class User extends Authenticatable
         return $this->hasOne(UserStatus::class);
     }
 
+    public function badges()
+    {
+        return $this->belongsToMany(Badge::class);
+    }
+
     public function increaseXp($quantity = 1)
     {
         $this->userStatus->xp_count += $quantity;
