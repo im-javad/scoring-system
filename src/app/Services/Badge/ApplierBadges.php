@@ -8,6 +8,10 @@ class ApplierBadges{
     {
         $xpHandler = resolve(XpHandler::class);
         
+        $topicHandler = resolve(TopicHandler::class);
+
+        $xpHandler->setNextHandler($topicHandler);
+
         $xpHandler->handle($userStatus);
     }
 }
