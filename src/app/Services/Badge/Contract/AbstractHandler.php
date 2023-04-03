@@ -19,4 +19,19 @@ abstract class AbstractHandler implements InterfaceHandler{
 
         return ;
     }
+
+    protected function applyBadge($userStatus)
+    {
+        $availableBadges = $this->getAvailableBadges($userStatus);
+        
+        $userBadges = $userStatus->user->badges;
+        
+        $notRecivedBadges = $availableBadges->diff($userBadges);
+
+        if($notRecivedBadges->isEmpty()) return ;
+        
+        $userStatus->user->badges()->attach($notRecivedBadges);
+    }
+
+    abstract protected function getAvailableBadges($userBadges);
 }

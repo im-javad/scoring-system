@@ -13,16 +13,8 @@ class TopicHandler extends AbstractHandler{
         parent::handle($userStatus);
     }
 
-    public function applyBadge(UserStatus $userStatus)
+    protected function getAvailableBadges($userStatus)
     {
-        $availableBadges = Badge::Topic()->where('required_points' , '<=' , $userStatus->topic_count)->get();
-
-        $userBadges = $userStatus->user->badges;
-        
-        $notRecivedBadges = $availableBadges->diff($userBadges);
-
-        if($notRecivedBadges->isEmpty()) return ;
-        
-        $userStatus->user->badges()->attach($notRecivedBadges);
+        return Badge::Topic()->where('required_points' , '<=' , $userStatus->topic_count)->get();
     }
 }

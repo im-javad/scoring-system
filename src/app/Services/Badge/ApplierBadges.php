@@ -12,9 +12,7 @@ class ApplierBadges{
 
         $replyHandler = resolve(ReplyHandler::class);
 
-        $xpHandler->setNextHandler($topicHandler);
-
-        $topicHandler->setNextHandler($replyHandler);
+        $xpHandler->setNextHandler($topicHandler)->setNextHandler($replyHandler);
 
         $xpHandler->handle($userStatus);
     }
