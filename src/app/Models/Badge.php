@@ -20,4 +20,9 @@ class Badge extends Model
     {
         return $query->where('type' , 1);
     }
+
+    public function scopeReply($query)
+    {
+        return $query->where('type' , 2);
+    }
 }
